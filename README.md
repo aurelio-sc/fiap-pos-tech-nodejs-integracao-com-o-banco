@@ -397,7 +397,7 @@ add constraint fk_user_id foreign key (user_id) references "user"(id);
 
 Com o script inserido, selecione-o e execute-o clicando no notão indicado na imagem a seguir:  
 
-![Execução de script no DBeaver](readme-assets/executar-script.jpg)  
+![Execução de script no DBeaver](readme-assets/executar-script_v2.jpg)  
 
 Navegue até ```seu-banco->Schemas->public``` como mostrado na imagem a seguir.  
 
