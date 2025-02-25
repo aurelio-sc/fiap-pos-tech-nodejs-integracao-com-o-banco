@@ -2596,39 +2596,36 @@ export class Category implements ICategory {
 ```  
 </details>  
 
-- **Observação:**
+
+<details>
     
-    No vídeo 18 da aula 1, o professor cria a entidade `Category` com a coluna `created_at`, porém, no script de criação das tabelas no PostgreSQL, a coluna correspondente é `creation_date`. Isso pode gerar erros ao seguir as aulas.
-    
-    Se encontrar esse problema, dentro do `@Column` decorator do arquivo `/src/entities/category.entity.ts`, substitua:
-    
-    ```tsx
-    typescript
-    CopyEdit
-    @Column({
-      **name: 'creation_at'**,
-      type: 'timestamp without time zone',
-      default: () => 'CURRENT_TIMESTAMP',
-    })
-    createdAt: Date;
-    
-    ```
-    
-    Por:
-    
-    ```tsx
-    typescript
-    CopyEdit
-    @Column({
-      **name: 'creation_date'**,
-      type: 'timestamp without time zone',
-      default: () => 'CURRENT_TIMESTAMP',
-    })
-    createdAt: Date;
-    
-    ```
-    
-    Transpire a aplicação novamente, reinicie o servidor e o erro deverá ser resolvido.
+<summary>⚠ Observação</summary>  
+
+<i>No vídeo 18 da aula 1, o professor cria a entidade `Category` com a coluna `created_at`, porém, no script de criação das tabelas no Postgres, a coluna correspondente é `creation_date`. Isso pode gerar erros ao seguir as aulas. Se encontrar esse problema, edite o `name` dentro do `@Column` decorator do arquivo `/src/entities/category.entity.ts` como a seguir:</i>
+
+<i>De:</i>
+```typescript
+@Column({
+    name: 'created_at',
+    type: 'timestamp without time zone',
+    default: () => 'CURRENT_TIMESTAMP',
+})
+createdAt: Date;
+```
+
+<i>Por:</i>
+```typescript
+@Column({
+    name: 'creation_date',
+    type: 'timestamp without time zone',
+    default: () => 'CURRENT_TIMESTAMP',
+})
+createdAt: Date;
+```
+<i>Transpire a aplicação novamente, reinicie o servidor e o erro deverá ser resolvido.</i>
+
+</details>
+
 
 Edite o arquivo ```/src/lib/typeorm/typeorm.ts``` de configuração do [TypeORM](https://typeorm.io/) para mapear a entidade criada:  
 
