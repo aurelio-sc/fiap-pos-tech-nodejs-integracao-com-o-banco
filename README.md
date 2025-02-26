@@ -35,11 +35,15 @@ O código acima salva as versões exatas das bibliotecas que serão utilizadas.
 
 ## 2. Inicie a aplicação Node.js:
 
-```npm init -y```  
+```sh
+npm init -y
+```  
 
 ## 3. Instale os pacotes de desenvolvimento:
 
-```npm i -D @types/node tsup tsx typescript```  
+```sh
+npm i -D @types/node tsup tsx typescript
+```  
 
 **tsup** é o transpiler, que vai converter nosso código de TypeScript para JavaScript.  
 **tsx** é uma bibilioteca para executar o código TypeScript em ambiente de desenvolvimento.  
@@ -47,7 +51,9 @@ O código acima salva as versões exatas das bibliotecas que serão utilizadas.
 
 ## 4. Instale o Fastfy:
 
-```npm i fastify```  
+```shell
+npm i fastify
+```  
 
 **Fastify** é um web framework rápido e simples baseado no express e no Hapi.  
 
@@ -57,7 +63,7 @@ O código acima salva as versões exatas das bibliotecas que serão utilizadas.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from "fastify";
 export const app = fastify();
 ```
@@ -67,7 +73,7 @@ export const app = fastify();
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { app } from "./app";
 
 app.listen({
@@ -84,7 +90,9 @@ app.listen({
 
 ## 6. Instale as bibliotecas Zod e Dotenv:
 
-```npm i dotenv zod```
+```sh
+npm i dotenv zod
+```
 
 **Zod** é uma biblioteca que fará validação de schemas. Quando enviarmos uma requisição ou objeto, o Zod é capaz de ler o objeto e verificar se o que foi enviado corresponde ao esperado.
 **Dotenv** é uma biblioteca para adicionar variáveis de ambiente ao processo do Node.js.
@@ -95,7 +103,7 @@ app.listen({
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sh
 PORT=3030
 ENV=development
 DATABASE_USER=seu-nome-de-usuario*
@@ -110,7 +118,7 @@ DATABASE_PORT=5432
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sh
 PORT=
 ENV=
 DATABASE_USER=
@@ -133,7 +141,7 @@ DATABASE_PORT=
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'dotenv/config'
 
 import { z } from 'zod'
@@ -178,7 +186,7 @@ Agora que as variáveis de ambiente já estão definidas e validadas, utilize-as
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { env } from "./env";
 import { app } from "./app";
 
@@ -193,11 +201,15 @@ app.listen({
 
 ## 10. Instale a biblioteca ESLint em ambiente de desenvolvimento:
 
-```npm i -D @typescript-eslint/eslint-plugin@6.21.0 @typescript-eslint/parser@6.21.0 eslint@8.57.0 eslint-config-prettier@9.1.0 eslint-config-standard@17.1.0 eslint-plugin-import@2.29.1 eslint-plugin-n@16.6.2 eslint-plugin-prettier@5.1.3 eslint-plugin-promise@6.1.1 prettier@3.2.5```  
+```sh
+npm i -D @typescript-eslint/eslint-plugin@6.21.0 @typescript-eslint/parser@6.21.0 eslint@8.57.0 eslint-config-prettier@9.1.0 eslint-config-standard@17.1.0 eslint-plugin-import@2.29.1 eslint-plugin-n@16.6.2 eslint-plugin-prettier@5.1.3 eslint-plugin-promise@6.1.1 prettier@3.2.5
+```  
 
 Esse comando fará a instalação do ESLint e de plugins que serão utilizados. As versões estão fixadas com @X.Y.Z. Caso queira instalar as versões mais novas disponíveis, é possível omitir esse trecho nos pacotes. O comando será:  
 
-```npm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-n eslint-plugin-prettier eslint-plugin-promise prettier```  
+```sh
+npm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-n eslint-plugin-prettier eslint-plugin-promise prettier
+```  
 
 ## 11. Configure o ESLint:
 
@@ -207,7 +219,7 @@ Crie o arquivo .eslintrv.json na raiz do projeto com a seguinte configuração:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "env" : {
         "es2020": true,
@@ -253,7 +265,9 @@ Caso esteja usando o VSCode, dependendo das suas configurações, o ESLint fará
 
 Caso queira defnir suas próprias, utilize o comando:  
 
-```npx eslint init```  
+```sh
+npx eslint init
+```  
 
 ## 12. Crie o arquivo .gitignore na raiz do projeto:
 
@@ -261,7 +275,7 @@ Caso queira defnir suas próprias, utilize o comando:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sh
 /node_modules
 /.env
 ```  
@@ -270,12 +284,16 @@ Caso queira defnir suas próprias, utilize o comando:
 **.env**  conteḿ informações que podem ser sensíveis.
 **node_modules** é uma pasta muito grande e é boa prática não fazer seu upload para o respositório. Afinal, a pessoa desenvolvedora poderá obtê-la com o comando:  
 
-```npm install```  
+```sh
+npm install
+```  
 
 ## 13. Configure o TypeScript:
 
 Utilize o comando para criar o arquivo ```tsconfig.json``` na raiz do projeto:  
-```npx tsc --init```  
+```sh
+npx tsc --init
+```  
 
 Nesse arquivo, localize e altere os valores das seguintes chaves:  
 
@@ -283,7 +301,7 @@ Nesse arquivo, localize e altere os valores das seguintes chaves:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 "target": "es2020",  
 "baseUrl": "./",  
 "paths": {  
@@ -298,7 +316,7 @@ Reformule as importações no arquivo ```/src/server.ts```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { env } from '@/env'  
 import { app } from '@/app'  
 
@@ -312,7 +330,9 @@ Nesse projeto será usado um banco de dados PostgrSQL.
 Você pode adaptá-lo para usar outro tipo de banco de dados.  
 Com o [Docker](https://docs.docker.com/engine/install/) instalado no seu sistema operacional, rode o comando:  
 
-```docker run -d --name postgres -e POSTGRES_USER=seu-nome-de-usuario -e POSTGRES_PASSWORD=sua-senha -e POSTGRES_DB=nome-do-seu-banco -p 5432:5432 postgres```  
+```sh
+docker run -d --name postgres -e POSTGRES_USER=seu-nome-de-usuario -e POSTGRES_PASSWORD=sua-senha -e POSTGRES_DB=nome-do-seu-banco -p 5432:5432 postgres
+```  
 
 Este comando cria um coainter PostgreSQL em que:  
 **name** postgres, é o nome do container.  
@@ -336,7 +356,7 @@ Clique sobre ele com o botão direit, vá em ```SQL Editor->New SQL script``` e 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sql
 CREATE TABLE product (
 id UUID PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -419,7 +439,7 @@ Crie o arquivo ```/src/entities/person.entity.ts``` com o seguinte conteúdo:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export class Person {
   id?: number
   cpf: string
@@ -448,7 +468,7 @@ Crie o arquivo ```/src/repositories/person.repository.ts``` com o seguinte conte
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 
 export class PersonRepository {
@@ -482,7 +502,7 @@ Crie o arquivo ```/src/use-cases/create-person.ts``` com o seguinte conteúdo:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { PersonRepository } from '@/repositories/person.repository'
 
@@ -508,7 +528,7 @@ Crie o arquivo ```/src/http/controllers/person/create.ts``` com o seguinte conte
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { PersonRepository } from '@/repositories/person.repository'
 import { CreatePersonUseCase } from '@/use-cases/create-person'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -553,7 +573,7 @@ Crie o arquivo ```/src/http/controllers/person/routes.ts``` com o seguinte conte
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 
@@ -571,7 +591,7 @@ Edite o arquivo ```/src/app.ts``` deixando-o da seguinte forma:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 
@@ -589,7 +609,7 @@ Edite o arquivo ```package.json``` na raiz do projeto. A chave "scripts" deve te
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 ...
 
 "scripts": {    
@@ -607,15 +627,15 @@ Edite o arquivo ```package.json``` na raiz do projeto. A chave "scripts" deve te
 **build** é o script usado para transpilar o código TypeScript dentro do diretório ```src``` para JavaScript no diretório ```build```.  
 
 Você pode executar esses scripts na raiz do projeto usando, respectivamente:
-```
+```sh
 npm run start:dev
 ```  
 
-```
+```sh
 npm run start
 ```  
 
-```
+```sh
 npm run build
 ```  
 
@@ -628,7 +648,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "cpf": "11122233344",
     "name": "Aurélio",
@@ -650,11 +670,15 @@ A primeira integração com banco de dados será feita pro meio do driver do Pos
 
 Instale o pacote que o contém usando o comando:  
 
-```npm i pg```  
+```sh
+npm i pg
+```  
 
 Como o projeto está sendo desenvolvido com TypeScript, será necessário instalar os tipos em ambiente de desenvolvimento com o comando:  
 
-```npm i -D @types/pg```  
+```sh
+npm i -D @types/pg
+```  
 
 Crie o arquivo ```db.ts``` e também seu diretório em ```/src/lib/pg/db.ts``` com o conteúdo:  
 
@@ -662,7 +686,7 @@ Crie o arquivo ```db.ts``` e também seu diretório em ```/src/lib/pg/db.ts``` c
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Pool, PoolClient } from 'pg'
 import { env } from '@/env'
 
@@ -715,7 +739,7 @@ Crie os arquivos ```/src/entities/user.entity.ts```, ```/src/repositories/user.r
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export class User {
   id?: number
   username: string
@@ -733,7 +757,7 @@ export class User {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 import { database } from '@/lib/pg/db'
@@ -770,7 +794,7 @@ Observe que o tipo do retorno do método ```findWithPerson``` é ```<(User & Per
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { User } from '@/entities/user.entity'
 import { UserRepository } from '@/repositories/user.repository'
 
@@ -795,7 +819,7 @@ Crie o diretório com o arquivo ```/src/http/controllers/user/create.ts``` com o
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/user.repository'
 import { CreateUserUseCase } from '@/use-cases/create-user'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -833,7 +857,7 @@ Crie o arquivo de rota ```/src/http/controllers/user/routes.ts``` com o seguinte
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 
@@ -849,7 +873,7 @@ Registre a rota criada em ```/src/app.ts```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 import { userRoutes } from './http/controllers/user/routes'
@@ -876,7 +900,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {    
     "username": "Aurélio",
     "password": "123456"
@@ -900,7 +924,7 @@ Edite o arquivo de rota ```/src/repositories/person-repository.ts``` com o segui
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { database } from '@/lib/pg/db'
 
@@ -934,7 +958,7 @@ Crie o arquivo ```/src/use-cases/find-with-person.ts``` com o seguinte conteúdo
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 import { UserRepository } from '@/repositories/user.repository'
@@ -956,7 +980,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "cpf": "11122233344",
     "name": "Aurélio",
@@ -979,7 +1003,7 @@ Observando a tabela ```person``` no banco de dados é possível notar que a pers
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { PersonRepository } from '@/repositories/person.repository'
 import { CreatePersonUseCase } from '@/use-cases/create-person'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -1028,7 +1052,7 @@ Crie o arquivo ```/src/http/controllers/user/find-user.ts``` com o seguinte cont
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/user.repository'
 import { FindWithPersonUseCase } from '@/use-cases/find-with-person'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -1061,7 +1085,7 @@ export async function findUser(request: FastifyRequest, reply: FastifyReply) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 import { findUser } from './find-user'
@@ -1097,7 +1121,7 @@ Em seguida, crie o arquivo ```src/use-cases/factory/make-create-user-use-case.ts
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/user.repository'
 import { CreateUserUseCase } from '../create-user'
 
@@ -1116,7 +1140,7 @@ Crie factories para os use cases ```create-person``` e ```find-with-person```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { PersonRepository } from '@/repositories/person.repository'
 import { CreatePersonUseCase } from '../create-person'
 
@@ -1133,7 +1157,7 @@ export function makeCreatePersonUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/user.repository'
 import { FindWithPersonUseCase } from '../find-with-person'
 
@@ -1154,7 +1178,7 @@ Edite o arquivo ```/src/app.ts``` deixando-o da seguinte forma:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 import { userRoutes } from './http/controllers/user/routes'
@@ -1197,7 +1221,7 @@ Agora que foram criadas as factories, refatore as controlers.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreatePersonUseCase } from '@/use-cases/factory/make-create-person-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -1234,7 +1258,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreateUserUseCase } from '@/use-cases/factory/make-create-user-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -1260,7 +1284,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeFindWithPersonUseCase } from '@/use-cases/factory/make-find-with-person-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -1290,7 +1314,7 @@ Em seguida, crie o arquivo ```/src/use-cases/errors/resource-not-found-error.ts`
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export class ResourceNotFoundError extends Error {
   constructor() {
     super('Resource not found')
@@ -1307,7 +1331,7 @@ Edite o arquivo ```/src/use-cases/find-with-person.ts``` deixando-o assim:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 import { UserRepository } from '@/repositories/user.repository'
@@ -1337,7 +1361,7 @@ Edite o arquivo ```/src/app.ts``` deixando-o da seguinte forma:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 import { userRoutes } from './http/controllers/user/routes'
@@ -1387,7 +1411,7 @@ Em seguinda, crie o arquivo ```/src/utils/global-error-handler.ts``` com o segui
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { env } from '@/env'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ZodError } from 'zod'
@@ -1448,7 +1472,7 @@ Agora remova o tratamento de erros de ```/src/app.ts```, deixando-o assim:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 import { userRoutes } from './http/controllers/user/routes'
@@ -1476,7 +1500,7 @@ Crie o arquivo ```/src/repositories/person.repository.interface.ts``` com o segu
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 
 export interface IPersonRepository {
@@ -1491,7 +1515,7 @@ Crie o arquivo ```/src/repositories/user.repository.interface.ts``` com o seguin
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 
@@ -1510,7 +1534,7 @@ Edite o arquivo ```/src/repositories/pg/person.repository.ts``` para implementar
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { database } from '@/lib/pg/db'
 import { IPersonRepository } from '../person.repository.interface'
@@ -1540,7 +1564,7 @@ Edite o arquivo ```/src/repositories/pg/user.repository.ts``` para implementar a
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 import { database } from '@/lib/pg/db'
@@ -1580,7 +1604,7 @@ Edite o ```/src/use-cases/create-person.ts``` para injetar a interface como depe
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { IPersonRepository } from '@/repositories/person.repository.interface'
 
@@ -1600,7 +1624,7 @@ Faça o mesmo com ```/src/use-cases/create-user.ts``` e ```/src/use-cases/find-w
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { User } from '@/entities/user.entity'
 import { IUserRepository } from '@/repositories/user.repository.interface'
 
@@ -1618,7 +1642,7 @@ export class CreateUserUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Person } from '@/entities/person.enetity'
 import { User } from '@/entities/user.entity'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
@@ -1646,7 +1670,7 @@ Quando [os arquivos dos repositórios foram movidos](#42-crie-uma-interface-para
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { PersonRepository } from '@/repositories/pg/person.repository'
 import { CreatePersonUseCase } from '../create-person'
 
@@ -1663,7 +1687,7 @@ export function makeCreatePersonUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/pg/user.repository'
 import { CreateUserUseCase } from '../create-user'
 
@@ -1680,7 +1704,7 @@ export function makeCreateUserUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/pg/user.repository'
 import { FindWithPersonUseCase } from '../find-with-person'
 
@@ -1703,7 +1727,7 @@ Prossiga criando arquivos para as interfaces das entidades:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export interface IPerson {
   id?: number
   cpf: string
@@ -1719,7 +1743,7 @@ export interface IPerson {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export interface IUser {
   id?: number
   username: string
@@ -1734,7 +1758,7 @@ Edite os arquivos das entidades para implementar as interfaces criadas.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IPerson } from '@/use-cases/find-address-by-person-id'
 
 export class Person implements IPerson {
@@ -1759,7 +1783,7 @@ export class Person implements IPerson {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IUser } from './models/user.interface'
 
 export class User implements IUser {
@@ -1781,7 +1805,7 @@ Edite os arquivos das interfaces dos repositórios para que dependam das interfa
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IPerson } from '@/entities/models/person.interface'
 
 export interface IPersonRepository {
@@ -1794,7 +1818,7 @@ export interface IPersonRepository {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IPerson } from '@/entities/models/person.interface'
 import { IUser } from '@/entities/models/user.interface'
 
@@ -1811,7 +1835,7 @@ Edite os arquivos dos repositórios para que dependam das interfaces e não das 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { database } from '@/lib/pg/db'
 import { IPersonRepository } from '../person.repository.interface'
 import { IPerson } from '@/entities/models/person.interface'
@@ -1839,7 +1863,7 @@ export class PersonRepository implements IPersonRepository {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { database } from '@/lib/pg/db'
 import { IUserRepository } from '../user.repository.interface'
 import { IUser } from '@/entities/models/user.interface'
@@ -1880,7 +1904,7 @@ Edite os arquivos de use cases para que dependam das interfaces e não das imple
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IPerson } from '@/entities/models/person.interface'
 import { IPersonRepository } from '@/repositories/person.repository.interface'
 
@@ -1898,7 +1922,7 @@ export class CreatePersonUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IUser } from '@/entities/models/user.interface'
 import { IUserRepository } from '@/repositories/user.repository.interface'
 
@@ -1916,7 +1940,7 @@ export class CreateUserUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { IUserRepository } from '@/repositories/user.repository.interface'
 import { IPerson } from '@/entities/models/person.interface'
@@ -1948,7 +1972,7 @@ Crie o arquivo ```/src/entities/models/address.interface.ts``` com o seguinte co
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export interface IAddress {
   id?: number
   street: string
@@ -1968,7 +1992,7 @@ Crie o arquivo ```/src/entities/address.entity.ts``` com o seguinte conteúdo:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IAddress } from './models/address.interface'
 
 export class Address implements IAddress {
@@ -1997,7 +2021,7 @@ Crie o arquivo ```/src/repositories/address.repository.interface.ts``` com o seg
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IAddress } from '@/entities/models/address.interface'
 import { IPerson } from '@/entities/models/person.interface'
 
@@ -2019,7 +2043,7 @@ Implemente a interface criando o arquivo ```src/repositories/pg/address.reposito
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IAddress } from '@/entities/models/address.interface'
 import { IAddressRepository } from '../address.repository.interface'
 import { database } from '@/lib/pg/db'
@@ -2072,7 +2096,7 @@ Crie o arquivo ```/src/use-cases/create-address.ts``` com o seguinte conteúdo:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IAddress } from '@/entities/models/address.interface'
 import { IAddressRepository } from '@/repositories/address.repository.interface'
 
@@ -2092,7 +2116,7 @@ Crie o arquivo ```/src/use-cases/find-address-by-person-id.ts``` com o seguinte 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IAddress } from '@/entities/models/address.interface'
 import { IPerson } from '@/entities/models/person.interface'
 import { IAddressRepository } from '@/repositories/address.repository.interface'
@@ -2123,7 +2147,7 @@ Crie o o arquivo ```/src/use-cases/factory/make-create-address-use-case.ts``` co
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { AddressRepository } from '@/repositories/pg/address.repository'
 import { CreateAddressUseCase } from '../create-address'
 
@@ -2143,7 +2167,7 @@ Crie o o arquivo ```/src/use-cases/factory/make-find-address-by-person-id-use-ca
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { AddressRepository } from '@/repositories/pg/address.repository'
 import { FindAddressByPersonId } from '../find-address-by-person-id'
 
@@ -2167,7 +2191,7 @@ Em seguida, crie o arquivo ```/src/http/controllers/address/create.ts``` com o s
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreateAddressUseCase } from '@/use-cases/factory/make-create-address-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -2203,7 +2227,7 @@ Crie o arquivo ```/src/http/controllers/address/find-address-by-person-id.ts``` 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeFindAddressByPersonIdUseCase } from '@/use-cases/factory/make-find-address-by-person-id-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -2244,7 +2268,7 @@ Crie o arquivo ```/src/http/controllers/address/routes.ts```para registrar as ro
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 import { findAddressByPersonId } from './find-address-by-person-id'
@@ -2262,7 +2286,7 @@ Edite ```/src/app.ts``` importando o arquivo de rotas criado:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
 import { userRoutes } from './http/controllers/user/routes'
@@ -2286,7 +2310,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 {    
   "street": "Rua",
   "city": "Cidade",
@@ -2322,7 +2346,9 @@ Ao ser enviada, a requisição deverá retornar um status ```200```.
 
 Comece executando o coamndo se seguir no terminal, na raiz do projeto:  
 
-```npm i typeorm reflect-metadata```  
+```sh
+npm i typeorm reflect-metadata
+```  
 
 Além de instalar o [TypeORM](https://typeorm.io/), será instalada a biblioteca [Reflect Metadata](https://www.npmjs.com/package/reflect-metadata).  
 
@@ -2336,7 +2362,7 @@ Edite o arquivo ```/src/app.ts``` para importar o [Reflect Metadata](https://www
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'reflect-metadata'
 import fastify from 'fastify'
 import { personRoutes } from '@/http/controllers/person/routes'
@@ -2360,7 +2386,7 @@ Edite o arquivo ```/tsconfig.json``` para habilitar novas flags:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 ...  
 
 "experimentalDecorators": true,  
@@ -2381,7 +2407,7 @@ Crie o arquivo ```/src/lib/typeorm/typeorm.ts``` que será responsável pela con
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { DataSource } from 'typeorm'
 
 import { env } from '@/env'
@@ -2414,7 +2440,7 @@ Edite o arquivo ```/src/app.ts``` para importar o arquivo ```/src/lib/typeorm/ty
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'reflect-metadata'
 import '@/lib/typeorm/typeorm'
 import fastify from 'fastify'
@@ -2435,7 +2461,9 @@ app.setErrorHandler(globalErrorHandler)
 
 Teste a conexão com o banco executando o comando a seguir no terminal na raiz do projeto:  
 
-```npm run start:dev```  
+```sh
+npm run start:dev
+```  
 
 A mensagem ```Database with TypeORM connected!``` deverá ser exibida no console em caso de sucesso.  
 
@@ -2447,7 +2475,7 @@ Crie o arquivo ```/src/entities/models/product.interface.ts``` para definir a in
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export interface IProduct {
   id?: string
   name: string
@@ -2466,7 +2494,7 @@ Crie o arquivo ```/src/entities/product.entity.ts``` para implementar a interfac
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { IProduct } from './models/product.interface'
 
@@ -2516,7 +2544,7 @@ Edite o arquivo ```/src/lib/typeorm/typeorm.ts``` de configuração do [TypeORM]
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { DataSource } from 'typeorm'
 
 import { env } from '@/env'
@@ -2552,7 +2580,7 @@ Crie o arquivo ```/src/entities/models/category.interface.ts``` para definir a i
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export interface ICategory {
   id?: number
   name: string
@@ -2567,7 +2595,7 @@ Crie o arquivo ```/src/entities/category.entity.ts``` para implementar a interfa
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { ICategory } from './models/category.interface'
 
@@ -2633,7 +2661,7 @@ Edite o arquivo ```/src/lib/typeorm/typeorm.ts``` de configuração do [TypeORM]
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { DataSource } from 'typeorm'
 
 import { env } from '@/env'
@@ -2670,7 +2698,7 @@ Edite o arquivo ```src/entities/models/product.interface.ts``` e adicione o camp
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ICategory } from './category.interface'
 
 export interface IProduct {
@@ -2690,7 +2718,7 @@ Implemente ```categories``` em ```/src/entities/product.entity.ts```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import {
   Column,
   Entity,
@@ -2764,7 +2792,7 @@ Crie as interfaces dos repositórios:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 
 export interface IProductRepository {
@@ -2777,7 +2805,7 @@ export interface IProductRepository {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 
 export interface ICategoryRepository {
@@ -2794,7 +2822,7 @@ Em seguida, implemente essas interfaces:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 import { IProductRepository } from '../product.repository.interface'
 import { Product } from '@/entities/product.entity'
@@ -2819,7 +2847,7 @@ export class ProductRepository implements IProductRepository {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { Repository } from 'typeorm'
 import { ICategoryRepository } from '../category.repository.interface'
 import { Category } from '@/entities/category.entity'
@@ -2849,7 +2877,7 @@ Crie arquivos para os métodos dos respositórios criados:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 import { IProductRepository } from '@/repositories/product.repository.interface'
 
@@ -2867,7 +2895,7 @@ export class CreateProductUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ICategoryRepository } from '@/repositories/category.repository.interface'
 
 export class CreateCategoryUseCase {
@@ -2888,7 +2916,7 @@ Crie factories para as novas use-cases:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ProductRepository } from '@/repositories/typeorm/product.repository'
 import { CreateProductUseCase } from '../create.product'
 
@@ -2905,7 +2933,7 @@ export function makeCreateProductUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { CategoryRepository } from '@/repositories/typeorm/category.repository'
 import { CreateCategoryUseCase } from '../create-category'
 
@@ -2931,7 +2959,7 @@ Em seguida crie os arquivos das controllers:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreateProductUseCase } from '@/use-cases/factory/make-create-product-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -2974,7 +3002,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreateCategoryUseCase } from '@/use-cases/factory/make-create-category-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -3003,7 +3031,7 @@ Crie rotas para as novas controllers criadas:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 
@@ -3017,7 +3045,7 @@ export async function productRoutes(app: FastifyInstance) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 
@@ -3035,7 +3063,7 @@ Edite o arquivo ```/src/app.ts``` importando as rotas criadas:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'reflect-metadata'
 import '@/lib/typeorm/typeorm'
 import fastify from 'fastify'
@@ -3065,7 +3093,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "name": "Bolinha",
     "description": "Bolinha para pets",
@@ -3086,7 +3114,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "name": "Brinquedo"
 }
@@ -3103,14 +3131,14 @@ Ao ser enviada, a requisição deverá retornar um status ```201```.
 
 Ao enviar a requisição do tipo ```post``` para ```localhost:3030/product``` ocorreu um erro com a seguinte mensagem no console:  
 
-```QueryFailedError: null value in column "id" of relation "product" violates not-null constraint```
+```QueryFailedError: null value in column "id" of relation "product" violates not-null constraint```ts
 
 Isso aconteceu, porque no script de criação do banco há o comando:  
 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sql
 CREATE TABLE product (
 id UUID PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -3127,7 +3155,9 @@ Para modificar a estrutura do banco de dados será realizada uma [migration com 
 
 Execute o seguinte comando no terminal na raiz do projeto:  
 
-```npx typeorm migration:create ./src/lib/typeorm/migrations/ProductAutoGenerateUUID```  
+```sh
+npx typeorm migration:create ./src/lib/typeorm/migrations/ProductAutoGenerateUUID
+```  
 
 **Importante:** Observe que foi criado um arquivo a migration em ```/src/lib/typeorm/migrations```.  A sequência numérica no início do nome da migration é um [timestamp](https://pt.wikipedia.org/wiki/Marca_temporal), então o seu será diferente do que será usado como exemplo.  
 
@@ -3137,7 +3167,7 @@ Edite o arquivo da migration ```src/lib/typeorm/migrations/1738694121784-Product
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
 export class ProductAutoGenerateUUID1738694121784
@@ -3172,7 +3202,7 @@ Edite o arquivo ```/src/lib/typeorm/typeorm.ts``` para importar a migration cria
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { DataSource } from 'typeorm'
 
 import { env } from '@/env'
@@ -3209,7 +3239,9 @@ Lembre-se que o nome ```ProductAutoGenerateUUID1738694121784``` será diferente,
 
 Para isso, execute o comando a seguir no terminal na raiz do projeto:  
 
- ```npm run build && npx typeorm migration:run -d ./build/lib/typeorm/typeorm.js```  
+ ```sh
+ npm run build && npx typeorm migration:run -d ./build/lib/typeorm/typeorm.js
+ ```  
 
  Execute os passos da etapa anterior para verificar que a requisição do tipo ```post``` para ```localhost:3030/product``` será registrada corretamente no banco de dados.  
 
@@ -3221,7 +3253,7 @@ Edite o arquivo ```/src/repositories/product.repository.interface.ts``` de inter
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 
 export interface IProductRepository {
@@ -3240,7 +3272,7 @@ Implemente os novos métodos em ```/src/repositories/typeorm/product.repository.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 import { IProductRepository } from '../product.repository.interface'
 import { Product } from '@/entities/product.entity'
@@ -3290,7 +3322,7 @@ Crie uma use case para cada novo método:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 import { IProductRepository } from '@/repositories/product.repository.interface'
 
@@ -3308,7 +3340,7 @@ export class FindAllProductsUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProductRepository } from '@/repositories/product.repository.interface'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { IProduct } from '@/entities/models/product.interface'
@@ -3333,7 +3365,7 @@ export class FindProductUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProduct } from '@/entities/models/product.interface'
 import { IProductRepository } from '@/repositories/product.repository.interface'
 
@@ -3351,7 +3383,7 @@ export class UpdateProductUseCase {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IProductRepository } from '@/repositories/product.repository.interface'
 
 export class DeleteProductUseCase {
@@ -3370,7 +3402,7 @@ Crie uma factory para cada novo use case:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ProductRepository } from '@/repositories/typeorm/product.repository'
 import { FindAllProductsUseCase } from '../find-all-products'
 
@@ -3388,7 +3420,7 @@ export function makeFindAllProductsUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ProductRepository } from '@/repositories/typeorm/product.repository'
 import { FindProductUseCase } from '../find-product'
 
@@ -3406,7 +3438,7 @@ export function makeFindProductUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ProductRepository } from '@/repositories/typeorm/product.repository'
 import { UpdateProductUseCase } from '../update-product'
 
@@ -3424,7 +3456,7 @@ export function makeUpdateProductUseCase() {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { ProductRepository } from '@/repositories/typeorm/product.repository'
 import { DeleteProductUseCase } from '../delete-product'
 
@@ -3444,7 +3476,7 @@ Crie uma controller para executar as factories:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeFindAllProductsUseCase } from '@/use-cases/factory/make-find-all-products-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -3473,7 +3505,7 @@ export async function findAllProducts(
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeFindProductUseCase } from '@/use-cases/factory/make-find-product-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -3501,7 +3533,7 @@ export async function findProduct(
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeUpdateProductUseCase } from '@/use-cases/factory/make-update-product-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -3551,7 +3583,7 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeDeleteProductUseCase } from '@/use-cases/factory/make-delete-product-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -3581,7 +3613,7 @@ Registre as rotas para as controllers criadas no arquivo ```/src/http/controller
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 import { findAllProducts } from './find-all-products'
@@ -3624,7 +3656,7 @@ Crie uma requisição do tipo ```put``` para a mesma rota anterior com o seguint
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "name": "Bolinha muito legal atualizada",
     "description": "Bolinha muito legal para pets",
@@ -3660,7 +3692,9 @@ Ao ser enviada, a requisição deverá retornar um status ```204```.
 
 Execute o comando no terminal na raiz do projeto:  
 
-```npm i @fastify/jwt bcryptjs && npm i -D @types/bcryptjs```  
+```sh
+npm i @fastify/jwt bcryptjs && npm i -D @types/bcryptjs
+```  
 
 **@fastify/jwt** é a biblioteca que lidará com [JWT](https://pt.wikipedia.org/wiki/JSON_Web_Token).  
 **bcryptjs** é uma biblioteca para gerar [hashes](https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hash) para as senhas de usuários.  
@@ -3674,7 +3708,7 @@ Eite o arquivo ```/src/http/controllers/user/create.ts``` para criar hashes das 
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { makeCreateUserUseCase } from '@/use-cases/factory/make-create-user-use-case'
 import { hash } from 'bcryptjs'
 import { FastifyReply, FastifyRequest } from 'fastify'
@@ -3714,7 +3748,7 @@ Edite o arquivo ```/.env``` e crie uma variável de ambiente para a secret key q
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sh
 PORT=3030
 ENV=development
 DATABASE_USER=seu-nome-de-usuario
@@ -3734,7 +3768,7 @@ Edite o arquivo ```/.env.example``` e insira ```JWT_SECRET```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```sh
 PORT=
 ENV=
 DATABASE_USER=
@@ -3752,7 +3786,7 @@ Adicione ```JWT_SECRET``` ao ```envSchema```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'dotenv/config'
 
 import { z } from 'zod'
@@ -3790,7 +3824,7 @@ Edite o arquivo ```/src/app.ts``` para configurar o JWT:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'reflect-metadata'
 import '@/lib/typeorm/typeorm'
 import fastify from 'fastify'
@@ -3832,7 +3866,7 @@ Nele, crie o arquivo```/src/http/middlewares/jwt-validate.ts``` responsável pel
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function validateJwt(
@@ -3861,7 +3895,7 @@ Adicione o middleware em ```/src/app.ts``` para que ele seja executado a cada re
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import 'reflect-metadata'
 import '@/lib/typeorm/typeorm'
 import fastify from 'fastify'
@@ -3904,7 +3938,7 @@ Edite o arquivo ```/src/repositories/user.repository.interface.ts``` e crie a as
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IPerson } from '@/entities/models/person.interface'
 import { IUser } from '@/entities/models/user.interface'
 
@@ -3922,7 +3956,7 @@ Implemente o novo método em ```/src/repositories/pg/user.repository.ts```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { database } from '@/lib/pg/db'
 import { IUserRepository } from '../user.repository.interface'
 import { IUser } from '@/entities/models/user.interface'
@@ -3972,7 +4006,7 @@ Crie um erro para credenciais inválidas em ```/src/use-cases/errors/invalid-cre
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 export class InvalidCredentialsError extends Error {
   constructor() {
     super('Invalid username or password')
@@ -3987,7 +4021,7 @@ Registre o novo erro em ```/src/utils/global-error-handler.ts```:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { env } from '@/env'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ZodError } from 'zod'
@@ -4047,7 +4081,7 @@ Crie o use case para sign-in:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { IUserRepository } from '@/repositories/user.repository.interface'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 
@@ -4073,7 +4107,7 @@ Crie uma factory para a nova use case:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { UserRepository } from '@/repositories/pg/user.repository'
 import { SigninUseCase } from '../signin'
 
@@ -4093,7 +4127,7 @@ Crie uma controller para exectuar a factory:
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
 import { makeSigninUseCase } from '@/use-cases/factory/make-signin-use-case'
 import { compare } from 'bcryptjs'
@@ -4131,7 +4165,7 @@ Registre a rota para a nova controller em ```/src/http/controllers/user/routes.t
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyInstance } from 'fastify'
 import { create } from './create'
 import { findUser } from './find-user'
@@ -4151,7 +4185,7 @@ Edite o arquivo o middleware ```/src/http/middlewares/jwt-validate.ts``` para li
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```ts
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function validateJwt(
@@ -4181,7 +4215,7 @@ Após executar o comando ```npm run start:dev```, crie no [Postman](https://www.
 <details>
 <summary>Ver conteúdo</summary>  
 
-```
+```json
 {
     "username": "feltrano@emial.com",
     "password": "feltrano"
